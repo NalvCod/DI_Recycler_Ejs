@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.di_recycler_ej1.databinding.ActivityMenuEjerciciosBinding
+import com.example.di_recycler_ej1.Ejercicio3
 
 class MenuEjercicios : AppCompatActivity() {
     //binding
@@ -29,6 +30,9 @@ class MenuEjercicios : AppCompatActivity() {
             startActivity(Intent(this, Ejercicio2::class.java))
         }
 
+        binding.button3.setOnClickListener{
+            startActivity(Intent(this, Ejercicio3::class.java))
+        }
 
 
     }

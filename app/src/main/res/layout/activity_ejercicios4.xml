@@ -5,9 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PokemonAdapter"
+    tools:context=".Ejercicios4"
     android:background="@drawable/fondorojo">
-
 
     <LinearLayout
         android:layout_marginTop="20dp"
@@ -15,64 +14,98 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="10dp"
-        android:layout_marginHorizontal="40dp"
+
         android:id="@+id/searchLayout"
+        app:layout_constraintBottom_toTopOf="@+id/titulo1"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintEnd_toEndOf="parent">
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginEnd="10dp">
+            android:layout_marginHorizontal="30dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/buscadorPokemon"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Introduce un POKÉMON"
-                android:background="@color/white" />
+                android:background="@color/white"
+                android:layout_marginEnd="8dp" />
+
         </com.google.android.material.textfield.TextInputLayout>
 
-
-        <ImageView
-            android:id="@+id/add"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:translationZ="30dp"
-            android:layout_margin="5dp"
-            android:src="@drawable/baseline_add_circle_outline_24"
-            android:layout_gravity="center" />
     </LinearLayout>
 
+
     <TextView
-        android:id="@+id/tituloDeseado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/titulo1"
         android:text="Pokémon deseados"
-        android:textColor="@color/white"
-        android:layout_marginTop="20dp"
         android:textSize="20dp"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/searchLayout"
         app:layout_constraintBottom_toTopOf="@+id/cardView"
         app:layout_constraintStart_toStartOf="@+id/cardView"
-        app:layout_constraintTop_toBottomOf="@+id/searchLayout" />
+        android:layout_marginBottom="5dp"/>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="0dp"
+        android:layout_height="200dp"
         android:layout_marginHorizontal="40dp"
-        android:layout_height="wrap_content"
         app:cardCornerRadius="20dp"
         app:cardElevation="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tituloDeseado">
+        app:layout_constraintBottom_toTopOf="@+id/pokemonCapturados"
+        app:layout_constraintTop_toBottomOf="@+id/searchLayout">
+
+
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycler"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     tools:listitem="@layout/activity_item_pokemon" />
 
     </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/pokemonCapturados"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pokémon capturados"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/cardView2"
+        app:layout_constraintStart_toStartOf="@+id/cardView2"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        app:layout_constraintVertical_bias="0"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_margin="40dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/activity_item_pokemon" />
+
+    </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

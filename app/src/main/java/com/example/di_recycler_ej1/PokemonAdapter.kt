@@ -8,14 +8,15 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.di_recycler_ej1.R
 import com.example.di_recycler_ej1.databinding.ActivityItemPokemonBinding
-import com.example.recyclerview.OnClickListener
-import com.example.recyclerview.Pokemon
+import com.example.di_recycler_ej1.OnClickListener
+import com.example.di_recycler_ej1.Pokemon
 
 class PokemonAdapter (private var listaPokemon: MutableList<Pokemon>, private val listener: OnClickListener): RecyclerView.Adapter<PokemonAdapter.ViewHolder>() {
 
     //Es una clase que mantiene los elementos de la lista en memoria
     inner class ViewHolder (view: View) : RecyclerView.ViewHolder(view){
-        val binding = ActivityItemPokemonBinding.bind(view) //Para acceder a los elementos del layout del item
+        val binding = ActivityItemPokemonBinding.bind(view)
+
         fun setListener(pokemon: Pokemon){
             binding.root.setOnLongClickListener{
                 listener.onLongClick(pokemon)
@@ -45,6 +46,10 @@ class PokemonAdapter (private var listaPokemon: MutableList<Pokemon>, private va
 
                 holder.binding.root.resources.getColor(R.color.rojito, null)
             )
+        }
+
+        holder.binding.delete.setOnClickListener{
+            removePokemon(pokemon)
         }
 
     }

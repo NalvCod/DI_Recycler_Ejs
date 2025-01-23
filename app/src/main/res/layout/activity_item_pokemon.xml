@@ -15,7 +15,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:buttonTint="@color/white"/>
+        android:buttonTint="@color/design_default_color_error"/>
 
     <TextView
         android:id="@+id/tituloPokemon"
@@ -28,5 +28,14 @@
         android:textColor="@color/black"
         android:textSize="20dp"
         android:layout_marginStart="10dp"/>
+
+    <ImageView
+        android:id="@+id/delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_delete_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="10dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
