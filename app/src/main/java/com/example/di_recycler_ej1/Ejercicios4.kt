@@ -4,9 +4,10 @@ import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.di_recycler_ej1.OnClickListener
+import com.example.di_recycler_ej1.Pokemon
+import com.example.di_recycler_ej1.PokemonAdapter
 import com.example.di_recycler_ej1.databinding.ActivityRecyclerTestBinding
 
 class Ejercicios4 : AppCompatActivity() {
