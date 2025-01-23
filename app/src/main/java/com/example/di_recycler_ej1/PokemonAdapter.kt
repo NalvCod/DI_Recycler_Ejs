@@ -43,7 +43,6 @@ class PokemonAdapter (private var listaPokemon: MutableList<Pokemon>, private va
             pokemon.atrapado = holder.binding.check.isChecked
             listener.pokemonCambiado(pokemon)
         }
-
     }
 
     fun addPokemon(pokemon: Pokemon){

@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.di_recycler_ej1.databinding.ActivityItemPokemonBinding
+import kotlin.collections.indexOf
+import kotlin.collections.remove
 
 class PokemonCapturadosAdapter (private var listaPokemon: MutableList<Pokemon>, private var listaPokemonCapturados: MutableList<Pokemon>, private val listener: OnClickListener): RecyclerView.Adapter<PokemonCapturadosAdapter.ViewHolder>() {
     //inner class
@@ -33,10 +35,22 @@ class PokemonCapturadosAdapter (private var listaPokemon: MutableList<Pokemon>, 
         holder.setListener(pokemon)
         holder.binding.tituloPokemon.text = pokemon.nombre
         holder.binding.check.isChecked = pokemon.atrapado
+        holder.binding.check.setOnClickListener {
+            if (!holder.binding.check.isChecked) {
+                pokemon.atrapado = false
+                liberarPokemon(pokemon)
+            }
+        }
     }
 
     override fun getItemCount(): Int {
         return listaPokemonCapturados.size
+    }
+
+    fun liberarPokemon(pokemon: Pokemon) {
+        listaPokemonCapturados.remove(pokemon)
+        listener.pokemonCambiado(pokemon)
+        notifyItemRemoved(listaPokemonCapturados.indexOf(pokemon))
     }
 
     fun addPokemonAtrapados(pokemon:Pokemon){

@@ -4,4 +4,5 @@ interface OnClickListener {
 
     fun onLongClick(pokemon: Pokemon)
     fun pokemonCambiado(pokemon: Pokemon)
+    fun pokemonVuelta(pokemon:Pokemon)
 }

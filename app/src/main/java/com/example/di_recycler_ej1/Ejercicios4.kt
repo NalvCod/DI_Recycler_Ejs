@@ -40,8 +40,6 @@ class Ejercicios4 : AppCompatActivity(), OnClickListener {
         )
 
         val listaPokemonAtrapados : MutableList<Pokemon> = mutableListOf()
-
-
         pokemonAdapter = PokemonAdapter(listaPokemon, this)
         pokemonCapturadosAdapter = PokemonCapturadosAdapter(listaPokemonAtrapados, listaPokemonAtrapados, this)
 
@@ -90,6 +88,11 @@ class Ejercicios4 : AppCompatActivity(), OnClickListener {
         pokemonAdapter.removePokemon(pokemon)
         pokemonCapturadosAdapter.addPokemonAtrapados(pokemon)
         pokemonCapturadosAdapter.notifyDataSetChanged()
+        pokemonAdapter.notifyDataSetChanged()
+
+    }
+
+    override fun pokemonVuelta(pokemon: Pokemon) {
 
     }
 }
