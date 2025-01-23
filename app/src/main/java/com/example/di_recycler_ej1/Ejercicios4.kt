@@ -8,16 +8,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.di_recycler_ej1.OnClickListener
 import com.example.di_recycler_ej1.Pokemon
 import com.example.di_recycler_ej1.PokemonAdapter
-import com.example.di_recycler_ej1.databinding.ActivityRecyclerTestBinding
+import com.example.di_recycler_ej1.databinding.ActivityEjercicios4Binding
 
-class Ejercicios4 : AppCompatActivity() {
-    private lateinit var binding: ActivityRecyclerTestBinding
+class Ejercicios4 : AppCompatActivity(), OnClickListener {
+    private lateinit var binding: ActivityEjercicios4Binding
     private lateinit var pokemonAdapter: PokemonAdapter
+    private lateinit var pokemonCapturadosAdapter : PokemonCapturadosAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityRecyclerTestBinding.inflate(layoutInflater)
+        binding = ActivityEjercicios4Binding.inflate(layoutInflater)
         setContentView(binding.root)
         enableEdgeToEdge()
 
@@ -38,12 +39,20 @@ class Ejercicios4 : AppCompatActivity() {
             Pokemon("Pidgey", 45, "Normal/Volador", 5)
         )
 
+        val listaPokemonAtrapados : MutableList<Pokemon> = mutableListOf()
+
 
         pokemonAdapter = PokemonAdapter(listaPokemon, this)
+        pokemonCapturadosAdapter = PokemonCapturadosAdapter(listaPokemonAtrapados, listaPokemonAtrapados, this)
 
         binding.recycler.apply {
             layoutManager = LinearLayoutManager(this@Ejercicios4)
             adapter = pokemonAdapter
+        }
+
+        binding.recyclerAtrapados.apply {
+            layoutManager = LinearLayoutManager(this@Ejercicios4)
+            adapter = pokemonCapturadosAdapter
         }
 
         binding.add.setOnClickListener{
@@ -52,7 +61,6 @@ class Ejercicios4 : AppCompatActivity() {
                 addPokemonAutomatically(pokemon)
             }
         }
-
     }
 
     private fun addPokemonAutomatically(pokemon : Pokemon){
@@ -65,6 +73,9 @@ class Ejercicios4 : AppCompatActivity() {
         builder.setMessage("¿Quieres eliminar el Pokémon?")
         builder.setPositiveButton("Si"){ _,_ ->
             pokemonAdapter.removePokemon(pokemon)
+            pokemonCapturadosAdapter.addPokemonAtrapados(pokemon)
+            pokemonCapturadosAdapter.notifyDataSetChanged()
+
         }
         builder.setNegativeButton("No"){_,_ ->
         }
@@ -73,5 +84,12 @@ class Ejercicios4 : AppCompatActivity() {
 
     override fun onLongClick(pokemon: Pokemon) {
         removePokemonAutomatically(pokemon)
+    }
+
+    override fun pokemonCambiado(pokemon: Pokemon) {
+        pokemonAdapter.removePokemon(pokemon)
+        pokemonCapturadosAdapter.addPokemonAtrapados(pokemon)
+        pokemonCapturadosAdapter.notifyDataSetChanged()
+
     }
 }

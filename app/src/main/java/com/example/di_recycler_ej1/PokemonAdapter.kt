@@ -1,5 +1,6 @@
 package com.example.di_recycler_ej1
 
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -15,8 +16,7 @@ class PokemonAdapter (private var listaPokemon: MutableList<Pokemon>, private va
 
     //Es una clase que mantiene los elementos de la lista en memoria
     inner class ViewHolder (view: View) : RecyclerView.ViewHolder(view){
-        val binding = ActivityItemPokemonBinding.bind(view)
-
+        val binding = ActivityItemPokemonBinding.bind(view) //Para acceder a los elementos del layout del item
         fun setListener(pokemon: Pokemon){
             binding.root.setOnLongClickListener{
                 listener.onLongClick(pokemon)
@@ -28,6 +28,7 @@ class PokemonAdapter (private var listaPokemon: MutableList<Pokemon>, private va
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.activity_item_pokemon, parent, false)
         return ViewHolder(view)
+
     }
 
     //Es la función que se ejecuta cada vez que un elemento es visible. El recycler le inyecta los datos
@@ -40,23 +41,14 @@ class PokemonAdapter (private var listaPokemon: MutableList<Pokemon>, private va
 
         holder.binding.check.setOnClickListener {
             pokemon.atrapado = holder.binding.check.isChecked
-        }
-        if (position % 2 == 0){
-            holder.binding.root.setBackgroundColor(
-
-                holder.binding.root.resources.getColor(R.color.rojito, null)
-            )
-        }
-
-        holder.binding.delete.setOnClickListener{
-            removePokemon(pokemon)
+            listener.pokemonCambiado(pokemon)
         }
 
     }
 
     fun addPokemon(pokemon: Pokemon){
         listaPokemon.add(pokemon)
-        notifyDataSetChanged()
+        notifyItemChanged(listaPokemon.size-1)
     }
 
     fun removePokemon(pokemon:Pokemon){
@@ -68,4 +60,6 @@ class PokemonAdapter (private var listaPokemon: MutableList<Pokemon>, private va
     override fun getItemCount(): Int = listaPokemon.size
 
 
+
 }
+

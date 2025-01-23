@@ -34,6 +34,10 @@ class MenuEjercicios : AppCompatActivity() {
             startActivity(Intent(this, Ejercicio3::class.java))
         }
 
+        binding.button4.setOnClickListener{
+            startActivity(Intent(this, Ejercicios4::class.java))
+        }
+
 
     }
 }

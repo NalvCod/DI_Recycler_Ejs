@@ -13,31 +13,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="10dp"
-
+        android:layout_marginHorizontal="40dp"
         android:id="@+id/searchLayout"
-        app:layout_constraintBottom_toTopOf="@+id/titulo1"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginHorizontal="30dp">
+            android:layout_marginEnd="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/buscadorPokemon"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Introduce un POKÉMON"
-                android:background="@color/white"
-                android:layout_marginEnd="8dp" />
-
+                android:background="@color/white" />
         </com.google.android.material.textfield.TextInputLayout>
 
+
+        <ImageView
+            android:id="@+id/add"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:translationZ="30dp"
+            android:layout_margin="5dp"
+            android:src="@drawable/baseline_add_circle_outline_24"
+            android:layout_gravity="center" />
     </LinearLayout>
 
 
@@ -45,8 +48,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/titulo1"
-        android:text="Pokémon deseados"
-        android:textSize="20dp"
+        android:text="Pokédex"
+        android:textSize="30dp"
+        android:layout_marginTop="40dp"
         android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@+id/searchLayout"
         app:layout_constraintBottom_toTopOf="@+id/cardView"
@@ -63,7 +67,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/pokemonCapturados"
-        app:layout_constraintTop_toBottomOf="@+id/searchLayout">
+        app:layout_constraintTop_toBottomOf="@+id/titulo1">
 
 
 
@@ -80,8 +84,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Pokémon capturados"
-        android:textSize="20dp"
+        android:textSize="30dp"
         android:textColor="@color/white"
+        android:layout_marginTop="40dp"
         app:layout_constraintBottom_toTopOf="@+id/cardView2"
         app:layout_constraintStart_toStartOf="@+id/cardView2"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
@@ -99,9 +104,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView">
 
-
-
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerAtrapados"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:listitem="@layout/activity_item_pokemon" />

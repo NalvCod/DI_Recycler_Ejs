@@ -76,4 +76,8 @@ class Ejercicio3 : AppCompatActivity(), OnClickListener {
     override fun onLongClick(pokemon: Pokemon) {
         removePokemonAutomatically(pokemon)
     }
+
+    override fun pokemonCambiado(pokemon: Pokemon) {
+        TODO("Not yet implemented")
+    }
 }
