@@ -93,6 +93,9 @@ class Ejercicios4 : AppCompatActivity(), OnClickListener {
     }
 
     override fun pokemonVuelta(pokemon: Pokemon) {
-
+        pokemonCapturadosAdapter.removePokemon(pokemon)
+        pokemonAdapter.addPokemon(pokemon)
+        pokemonCapturadosAdapter.notifyDataSetChanged()
+        pokemonAdapter.notifyDataSetChanged()
     }
 }

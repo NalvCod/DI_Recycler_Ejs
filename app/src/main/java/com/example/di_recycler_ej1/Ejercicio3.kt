@@ -80,4 +80,7 @@ class Ejercicio3 : AppCompatActivity(), OnClickListener {
     override fun pokemonCambiado(pokemon: Pokemon) {
         TODO("Not yet implemented")
     }
+    override fun pokemonVuelta(pokemon:Pokemon){
+        TODO()
+    }
 }

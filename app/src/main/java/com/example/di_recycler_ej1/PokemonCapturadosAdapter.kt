@@ -36,31 +36,21 @@ class PokemonCapturadosAdapter (private var listaPokemon: MutableList<Pokemon>, 
         holder.binding.tituloPokemon.text = pokemon.nombre
         holder.binding.check.isChecked = pokemon.atrapado
         holder.binding.check.setOnClickListener {
-            if (!holder.binding.check.isChecked) {
-                pokemon.atrapado = false
-                liberarPokemon(pokemon)
-            }
+            pokemon.atrapado = holder.binding.check.isChecked
+            listener.pokemonCambiado(pokemon)
         }
     }
 
-    override fun getItemCount(): Int {
-        return listaPokemonCapturados.size
-    }
-
-    fun liberarPokemon(pokemon: Pokemon) {
-        listaPokemonCapturados.remove(pokemon)
-        listener.pokemonCambiado(pokemon)
-        notifyItemRemoved(listaPokemonCapturados.indexOf(pokemon))
-    }
 
     fun addPokemonAtrapados(pokemon:Pokemon){
         listaPokemonCapturados.add(pokemon)
-        Log.v("PokemonCapturadosAdapter", "Pokemon atrapado: ${pokemon.nombre}")
+        notifyItemChanged(listaPokemon.size-1)
     }
 
     fun removePokemon(pokemon:Pokemon){
-            listaPokemonCapturados.remove(pokemon)
-
-
+        listaPokemonCapturados.remove(pokemon)
+        notifyDataSetChanged()
     }
+
+    override fun getItemCount(): Int = listaPokemon.size
 }
